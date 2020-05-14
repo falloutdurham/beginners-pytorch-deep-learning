@@ -1,11 +1,11 @@
 import torch
+import torch.nn as nn
+import torch.utils.data
 import torchvision
+from functools import partial
+from torch import optim
 from torch.utils.tensorboard import SummaryWriter
 from torchvision import datasets, transforms
-from torch import optim
-import torch.nn as nn
-from torchvision import datasets, transforms, models
-import torch.utils.data
 
 # Writer will output to ./runs/ directory by default
 
@@ -19,7 +19,7 @@ train_data_loader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle
 model = torchvision.models.resnet50(False)
 
 model.conv1 = torch.nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
-images, labels = next(iter(trainloader))
+images, labels = next(iter(train_data_loader))
 
 grid = torchvision.utils.make_grid(images)
 writer.add_image("images", grid, 0)
@@ -30,8 +30,6 @@ def send_stats(i, module, input, output):
     writer.add_scalar(f"layer {i}-mean", output.data.mean())
     writer.add_scalar(f"layer {i}-stddev", output.data.std())
 
-
-from functools import partial
 
 for i, m in enumerate(model.children()):
     m.register_forward_hook(partial(send_stats, i))
@@ -47,7 +45,7 @@ def train(
 ):
     model.to(device)
     for epoch in range(epochs):
-        print(f"epoch {epoch}")
+        print(f"epoch {epoch+1}")
         model.train()
         for batch in train_loader:
             optimizer.zero_grad()
@@ -70,8 +68,7 @@ def train(
             correct = torch.eq(torch.max(output, dim=1)[1], target).view(-1)
             num_correct += torch.sum(correct).item()
             num_examples += correct.shape[0]
-        print("Epoch {}, accuracy = {:.2f}".format(epoch, num_correct / num_examples))
+        print("Epoch {}, accuracy = {:.2f}".format(epoch+1, num_correct / num_examples))
 
 
 train(model, optimizer, criterion, train_data_loader, train_data_loader, epochs=5)
-
