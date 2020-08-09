@@ -12,7 +12,7 @@ model = models.resnet18(pretrained=True)
 device = "cuda:0"
 
 def add_gpu_noise(device, tensor):
-    a = torch.rand_like(tensor).to(device)
+    a = torch.randn_like(tensor).to(device)
     return tensor + a
 
 train_data_path = "." # Add correct path here!
