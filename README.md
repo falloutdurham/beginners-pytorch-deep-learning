@@ -57,7 +57,7 @@ Nachdem Sie das Github-Repository lokal geklont (bzw. zuvor geforkt) haben!
 2.) Aktivieren Sie die virtuelle Umgebung (https://docs.python.org/3/library/venv.html):
 
 `source myenv/bin/activate` (Ubuntu/Mac)
-`<venv>\Scripts\activate.bat` (Windows)
+`myenv\Scripts\activate.bat` (Windows)
  
 3.) Erstellen Sie eine (lokale) virtuelle Umgebung und installieren Sie die benötigten Bibliotheken und Pakete:
 
