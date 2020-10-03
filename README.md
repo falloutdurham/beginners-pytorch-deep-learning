@@ -89,3 +89,12 @@ Nachdem Sie das Github-Repository lokal geklont (bzw. zuvor geforkt) haben!
  
 5.) Nach Öffnen des Jupyter-Notebook-Startbildschirms wählen Sie auf der rechten Seite das Feld _New_ (bzw. in der
  Notebook-Ansischt den Reiter _Kernel_/_Change Kernel_) und wählen Sie _myenv_ aus.
+ 
+### Google Colaboratory
+
+In Google Colab stehen Ihnen standardmäßig einige Pakete bereits vorinstalliert zur Verfügung. Da sich
+ Neuinstallationen immer nur auf ein Notebook beziehen, können Sie von einer Einrichtung einer virtuellen Umgebung
+  absehen und direkt die Pakete mit Hilfe der Dateien `environment.yml` oder `requirements.txt
+  / requirements_cuda_available.txt` wie oben
+   beschrieben installieren, jedoch zusätzlich mit einem vorangestellten **!** , bspw. `!pip3 install -r requirements
+   .txt`. 
