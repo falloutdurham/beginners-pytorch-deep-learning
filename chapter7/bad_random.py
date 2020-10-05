@@ -36,7 +36,7 @@ criterion = nn.CrossEntropyLoss()
 
 def train(model, optimizer, loss_fn,  train_loader, val_loader, epochs=20, device='cuda:0'):
     model.to(device)
-    for epoch in range(epochs):
+    for epoch in range(1, epochs+1):
         print(f"epoch {epoch}")
         model.train()
         for batch in train_loader:
