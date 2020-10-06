@@ -1,3 +1,4 @@
+import os
 import requests
 import torch
 from flask import Flask, jsonify, request
@@ -7,10 +8,14 @@ from torchvision import transforms
 
 from catfish_model import CatfishModel, CatfishClasses
 
+
 def load_model():
+    location = os.environ["CATFISH_MODEL_LOCATION"]
     m = CatfishModel
+    m.load_state_dict(torch.load(location, map_location="cpu"))
     m.eval()
     return m
+
 
 model = load_model()
 
@@ -18,7 +23,7 @@ img_transforms = transforms.Compose([
     transforms.Resize((224,224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                         std=[0.229, 0.224, 0.225])
+                         std=[0.229, 0.224, 0.225] )
 ])
 
 def create_app():

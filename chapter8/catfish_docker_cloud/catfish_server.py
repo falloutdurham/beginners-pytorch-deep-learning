@@ -1,16 +1,28 @@
+import os
 import requests
 import torch
 from flask import Flask, jsonify, request
 from io import BytesIO
 from PIL import Image
+from shutil import copyfileobj
+from tempfile import NamedTemporaryFile
 from torchvision import transforms
+from urllib.request import urlopen
 
 from catfish_model import CatfishModel, CatfishClasses
 
+
 def load_model():
     m = CatfishModel
+    if "CATFISH_MODEL_LOCATION" in os.environ:
+        parameter_url = os.environ["CATFISH_MODEL_LOCATION"]
+        print(f"downloading {parameter_url}")
+        with urlopen(parameter_url) as fsrc, NamedTemporaryFile() as fdst:
+            copyfileobj(fsrc, fdst)
+            m.load_state_dict(torch.load(fdst, map_location="cpu"))
     m.eval()
     return m
+
 
 model = load_model()
 
