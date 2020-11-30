@@ -5,8 +5,7 @@ import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
 from torchvision import datasets, transforms,models
 import torch.utils.data
-from PIL import Image
-import numpy as np
+
 
 model = models.resnet18(pretrained=True)
 device = "cuda:0"
