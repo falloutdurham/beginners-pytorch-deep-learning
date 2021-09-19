@@ -2,6 +2,10 @@
 
 Repository for scripts and notebooks from the book: Programming PyTorch for Deep Learning: Creating and Deploying Deep Learning Applications
 
+## Download of dataset for chapter 2 ([download.py](https://github.com/falloutdurham/beginners-pytorch-deep-learning/blob/master/chapter2/download.py))
+
+Since some links are broken meanwhile, you can also find a downloadable version of the image dataset here (zip file): https://drive.google.com/file/d/16h8E7dnj5TpxF_ex4vF2do20iMWziM70
+
 ## Updates
 
 * 2020/05/25: Chapter 9.75 — Image Self-Supervised Learning
@@ -16,6 +20,10 @@ ________________
 ## PyTorch für Deep Learning: Anwendungen für Bild-, Ton- und Textdaten entwickeln und deployen
 
 --> [https://dpunkt.de/produkt/pytorch-fuer-deep-learning/]()
+
+## Hinweis zum Download des Datensatzes in Kapitel 2 ([download.py](https://github.com/falloutdurham/beginners-pytorch-deep-learning/blob/master/chapter2/download.py))
+
+Da einige URLs inzwischen leider veraltet sind, stehen Ihnen die Bilddateien zusätzlich als Download (Zip-Datei) bereit: https://drive.google.com/file/d/16h8E7dnj5TpxF_ex4vF2do20iMWziM70 
 
 ## Installationshinweise
 
@@ -92,9 +100,6 @@ Nachdem Sie das Github-Repository lokal geklont (bzw. zuvor geforkt) haben!
  
 ### Google Colaboratory
 
-In Google Colab stehen Ihnen standardmäßig einige Pakete bereits vorinstalliert zur Verfügung. Da sich
+Hier stehen Ihnen hier für mehrere Stunden leistungsfähige GPUs zur Verfügung, die das Training der Modelle merklich beschleunigen können. In Google Colab stehen Ihnen standardmäßig einige Pakete bereits vorinstalliert zur Verfügung. Da sich
  Neuinstallationen immer nur auf ein Notebook beziehen, können Sie von einer Einrichtung einer virtuellen Umgebung
-  absehen und direkt die Pakete mit Hilfe der Dateien `environment.yml` oder `requirements.txt
-  / requirements_cuda_available.txt` wie oben
-   beschrieben installieren, jedoch zusätzlich mit einem vorangestellten **!** , bspw. `!pip3 install -r requirements
-   .txt`. 
+  absehen und direkt die Pakete durch Ausführen der Zellen bzw. Zeilen, in denen ein **!** vorangestellt ist, installieren.
